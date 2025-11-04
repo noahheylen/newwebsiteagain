@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Noah Heylen — media, infrastructures, perception</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    :root{
+      --bg:#eaedfb;--text:#242424;--accent:#2b59c3;--muted:#555;--card:#f6f8fe;--radius:12px
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:"Inter",system-ui,sans-serif;background:var(--bg);color:var(--text);
+      line-height:1.6;display:flex;justify-content:center;min-height:100vh;padding:3rem 1.5rem
+    }
+    main{max-width:780px;width:100%}
+    header{margin-bottom:2.5rem}
+    header h1{font-size:clamp(1.8rem,3vw,2.2rem);font-weight:700;margin-bottom:.5rem}
+    section{background:var(--card);border-radius:var(--radius);padding:1.8rem 2rem;
+      box-shadow:0 4px 16px rgba(0,0,0,.04);margin-bottom:1.6rem}
+    h2{font-size:1.15rem;margin-bottom:.8rem}
+    a{color:var(--accent);text-decoration:none;border-bottom:1.5px solid var(--accent)}
+    a:hover{opacity:.8}
+    footer{margin-top:2rem;color:var(--muted);font-size:.9rem}
+
+    /* --- Artworks grid (add this) --- */
+    .art-grid{
+      display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:.6rem
+    }
+    .art-card{
+      border-radius:14px;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.05);
+      overflow:hidden;display:flex;flex-direction:column;border:1px solid #eaeefc
+    }
+    .art-card button{
+      all:unset;cursor:pointer;display:block
+    }
+    .art-thumb{
+      width:100%;height:140px;object-fit:cover;background:#dde5ff
+    }
+    .art-body{padding:.8rem 1rem}
+    .art-title{font-weight:700;font-size:.98rem;margin:0 0 .2rem 0}
+    .art-desc{color:var(--muted);font-size:.9rem}
+    .art-actions{padding:0 1rem 1rem}
+    .ghost-link{font-size:.9rem;border-bottom:1px dashed var(--accent)}
+
+    /* --- Modal (native <dialog/>) --- */
+    dialog{
+      border:none;border-radius:16px;padding:0;max-width:720px;width:min(92vw,720px);
+      box-shadow:0 20px 50px rgba(0,0,0,.25)
+    }
+    dialog::backdrop{background:rgba(22,25,46,.45)}
+    .modal{
+      display:grid;grid-template-columns:1fr;overflow:hidden;background:#fff
+    }
+    .modal img{width:100%;max-height:360px;object-fit:cover;background:#eef3ff}
+    .modal-body{padding:1.1rem 1.25rem}
+    .modal h3{margin:0 0 .35rem 0}
+    .modal p{color:#444;margin:.25rem 0 .8rem 0}
+    .modal .meta{color:var(--muted);font-size:.9rem;margin-bottom:.8rem}
+    .modal .row{display:flex;gap:.75rem;flex-wrap:wrap}
+    .btn{
+      appearance:none;border:1px solid #d9dff7;background:#f8faff;border-radius:10px;
+      padding:.5rem .8rem;font-size:.95rem;text-decoration:none;color:#1b2a5b
+    }
+    .btn:hover{background:#f0f3ff}
+    .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+    @media (min-width:680px){
+      .modal{grid-template-columns:1.1fr 1fr}
+      .modal img{height:100%}
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header><h1>Noah Heylen</h1></header>
+
+    <section>
+      <p>
+        Hi! I’m a Belgian researcher, artist and OSINT analyst examining how computational infrastructures shape perception and power across borders, platforms, and culture. My work spans geospatial investigations, video essays, reports, and digital archives, but also artistic research on material aesthetics (like throwaway vapes and military simulations), networked subcultures, and online polarization.
+      </p><br>
+      <p>
+        I’m completing an M2 in sociology of international politics at Université Paris Nanterre and did a BA and MA in Media Art at School of Arts Ghent. I have managed and curated media art programs and lectured on internet art history.
+      </p><br>
+      <p>
+        Currently based in Paris, I’m  researching AI applications in border surveillance in Northern France, and writing a thesis on the impact of prediction markets on media and media consumption, using a social/media-historical lens and network analysis.
+      </p>
+    </section>
+
+    <!-- —— Selected artworks (replaces your old list) —— -->
+<section>
+  <h2>Selected artworks</h2>
+
+  <div class="art-grid">
+
+    <a class="art-card" href="conflict.html" aria-label="">
+      <img class="art-thumb" src="vapethumb.png" alt="videoscreenshot" loading="lazy">
+      <div class="art-body">
+        <div class="art-title">Conflict-powered</div>
+        <p class="art-teaser">Self-made power banks from throwaway vapes powering two LCD screens.</p>
+      </div>
+    </a>
+
+    <a class="art-card" href="kinship.html" aria-label="">
+      <img class="art-thumb" src="kinshipthumb.png" alt="" loading="lazy">
+      <div class="art-body">
+        <div class="art-title">Involuntary Kinship</div>
+        <p class="art-teaser">Digital intervention.</p>
+      </div>
+    </a>
+
+    <a class="art-card" href="world.html" aria-label="">
+      <img class="art-thumb" src="v1.jpg" alt="" loading="lazy">
+      <div class="art-body">
+        <div class="art-title">All your world are belong to us</div>
+        <p class="art-teaser">Cesium for Unreal.</p>
+      </div>
+    </a>
+
+
+    <a class="art-card" href="keyboard.html" aria-label="">
+      <img class="art-thumb" src="keyboard_installation.png" alt="" loading="lazy">
+      <div class="art-body">
+        <div class="art-title">In order to do the things you love</div>
+        <p class="art-teaser">Keyboard display.</p>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+
+
+    <section>
+      <h2>Contact</h2>
+      <p>noah.heylen@proton.me</p>
+      <p><a href="Heylen_Noah_CV.pdf">Curriculum Vitae (PDF)</a></p>
+    </section>
+
+    <footer>Built with plain HTML + CSS · hosted on my own server.</footer>
+  </main>
+
+  <script>
+    // Minimal JS to open/close native dialogs
+    (function(){
+      const openers = document.querySelectorAll('[data-dialog]');
+      openers.forEach(el=>{
+        el.addEventListener('click',()=>{
+          const id = el.getAttribute('data-dialog');
+          const dlg = document.getElementById(id);
+          if(dlg) dlg.showModal();
+        });
+      });
+      document.querySelectorAll('dialog [data-close]').forEach(btn=>{
+        btn.addEventListener('click',()=> btn.closest('dialog')?.close());
+      });
+      // Close when clicking backdrop (outside content)
+      document.querySelectorAll('dialog').forEach(dlg=>{
+        dlg.addEventListener('click', (e)=>{
+          const rect = dlg.getBoundingClientRect();
+          const inside = e.clientX>=rect.left && e.clientX<=rect.right && e.clientY>=rect.top && e.clientY<=rect.bottom;
+          if(!inside) dlg.close();
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
